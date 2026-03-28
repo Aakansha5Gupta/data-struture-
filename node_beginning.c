@@ -1,0 +1,43 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+// Node structure
+struct node
+{
+    int data;
+    struct node *next;
+};
+
+int main()
+{
+    struct node *head = NULL, *newnode, *temp;
+    int n, i;
+
+    printf("Enter number of nodes: ");
+    scanf("%d", &n);
+
+    // Insert at beginning
+    for(i=0; i<n; i++)
+    {
+        newnode = (struct node*)malloc(sizeof(struct node));
+
+        printf("Enter data: ");
+        scanf("%d", &newnode->data);
+
+        newnode->next = head;  // link to previous list
+        head = newnode;        // update head
+    }
+
+    // Traverse list
+    printf("Linked List elements are:\n");
+    temp = head;
+
+    while(temp != NULL)
+    {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL");
+
+    return 0;
+}
